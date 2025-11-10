@@ -1,0 +1,151 @@
+A questão que nos é posta hoje é um belíssimo exemplo de como propriedades aparentemente
+simples, quando impostas universalmente, podem forçar uma estrutura extremamente rígida sobre
+um objeto algébrico. O traço, uma função aparentemente modesta — a soma dos elementos da
+diagonal —, revela-se aqui um poderoso detetive do comportamento interno da matriz.
+
+Vamos à demonstração, que conectará a noção de traço, autovalores e, em última instância, a
+nilpotência, em uma cadeia lógica impecável.
+
+\subsection*{Enunciado do Problema:}
+
+Seja $A$ uma matriz complexa $n \times n$ tal que, para todo inteiro positivo $k$, tem-se traço$(A^k)=0$.
+Prove que $A$ é nilpotente.
+
+\subsection*{Demonstração}
+
+Nossa estratégia será demonstrar que a condição imposta sobre os traços das potências de $A$
+implica que o único autovalor possível para $A$ é o escalar $0$. Uma vez estabelecido este fato,
+invocaremos o resultado do nosso primeiro exercício para concluir a prova.
+
+\textbf{Passo 1: A Relação Fundamental entre Traço e Autovalores}
+
+Recordemos dois resultados fundamentais da teoria espectral.
+
+\textbf{Teorema 1:} O traço de uma matriz complexa $A \in M_n(\mathbb{C})$ é igual à soma de seus autovalores,
+contados com suas respectivas multiplicidades algébricas.
+Se $\lambda_1, \lambda_2, \ldots, \lambda_n$ são os autovalores de $A$, então:
+
+\[
+\mathrm{tr}(A) = \sum_{i=1}^n \lambda_i
+\]
+
+\textbf{Teorema 2:} Se $\lambda_1, \lambda_2, \ldots, \lambda_n$ são os autovalores de $A$, então os autovalores da matriz $A^k$ (para $k \in \mathbb{Z}^+$) são $\lambda_1^k, \lambda_2^k, \ldots, \lambda_n^k$.
+
+Combinando estes dois teoremas, obtemos uma expressão para o traço de $A^k$ em termos dos
+autovalores de $A$:
+
+\[
+\mathrm{tr}(A^k) = \sum_{i=1}^n \lambda_i^k
+\]
+
+\textbf{Passo 2: Traduzindo a Hipótese do Problema}
+
+A hipótese do problema é que $\mathrm{tr}(A^k)=0$ para todo inteiro positivo $k \geq 1$. Utilizando a relação que
+acabamos de estabelecer, esta hipótese se traduz no seguinte sistema infinito de equações sobre os
+autovalores de $A$:
+
+\[
+\begin{cases}
+k=1: & \lambda_1+\lambda_2+\cdots+\lambda_n=0 \\
+k=2: & \lambda_1^2+\lambda_2^2+\cdots+\lambda_n^2=0 \\
+k=3: & \lambda_1^3+\lambda_2^3+\cdots+\lambda_n^3=0 \\
+\quad & \vdots
+\end{cases}
+\]
+
+Denominamos a soma das $k$-ésimas potências como $p_k=\sum_{i=1}^n \lambda_i^k$. A nossa hipótese é, portanto,
+$p_k=0$ para todo $k \geq 1$. Nosso objetivo é mostrar que esta condição força $\lambda_i=0$ para todo $i$.
+
+\textbf{Passo 3: As Identidades de Newton e os Polinômios Simétricos}
+
+Para provar que todos os autovalores são nulos, faremos uso das célebres \textit{Identidades de Newton},
+que relacionam as somas de potências $(p_k)$ com os polinômios simétricos elementares $(e_j)$ nas
+variáveis $\lambda_1,\ldots,\lambda_n$.
+
+Os polinômios simétricos elementares são definidos como:
+
+\[
+e_1=\sum_i \lambda_i, \quad
+e_2=\sum_{i<j} \lambda_i\lambda_j, \quad
+e_3=\sum_{i<j<k} \lambda_i\lambda_j\lambda_k, \quad
+\ldots, \quad
+e_n=\lambda_1\lambda_2\cdots\lambda_n
+\]
+
+As Identidades de Newton fornecem uma relação recursiva:
+
+\[
+ke_k = \sum_{i=1}^k (-1)^{i-1} e_{k-i} p_i
+\]
+
+Vamos "abrir" as primeiras identidades para maior clareza:
+
+\begin{itemize}
+\item Para $k=1$: $e_1=p_1$
+\item Para $k=2$: $2e_2=e_1p_1-p_2$
+\item Para $k=3$: $3e_3=e_2p_1-e_1p_2+p_3$
+\item E assim por diante.
+\end{itemize}
+
+Agora, aplicamos a nossa hipótese, $p_k=0$ para todo $k \geq 1$:
+
+\begin{itemize}
+\item $e_1=p_1=0$.
+\item $2e_2=e_1p_1-p_2=(0)(0)-0=0 \;\;\Longrightarrow\;\; e_2=0$.
+\item $3e_3=e_2p_1-e_1p_2+p_3=(0)(0)-(0)(0)+0=0 \;\;\Longrightarrow\;\; e_3=0$.
+\end{itemize}
+
+Por indução, se supomos que $e_1,e_2,\ldots,e_{k-1}$ são todos nulos, a identidade
+$ke_k=\sum_{i=1}^k (-1)^{i-1} e_{k-i}p_i$ se torna:
+
+\[
+ke_k=e_{k-1}p_1 - e_{k-2}p_2+\cdots+(-1)^{k-2} e_1p_{k-1}+(-1)^{k-1} e_0 p_k.
+\]
+
+Como $e_1,\ldots,e_{k-1}$ são nulos e $p_1,\ldots,p_k$ são nulos, todos os termos do lado direito se anulam.
+Logo, $ke_k=0$, o que implica $e_k=0$.
+
+Portanto, demonstramos que $e_j=0$ para todo $j=1,2,\ldots,n$.
+
+\textbf{Passo 4: Conexão com o Polinômio Característico}
+
+Qual a relevância dos polinômios simétricos elementares? Eles são, a menos de um sinal, os
+coeficientes do polinômio característico de $A$. O polinômio característico $p_A(t)$ tem os autovalores
+$\lambda_1,\ldots,\lambda_n$ como suas raízes. Portanto, ele pode ser escrito como:
+
+\[
+p_A(t)=(t-\lambda_1)(t-\lambda_2)\cdots(t-\lambda_n)
+\]
+
+Expandindo esta forma fatorada, obtemos:
+
+\[
+p_A(t)=t^n-e_1t^{n-1}+e_2t^{n-2}-\cdots+(-1)^n e_n
+\]
+
+No Passo 3, provamos que $e_1=e_2=\cdots=e_n=0$. Substituindo estes valores na expressão do
+polinômio característico:
+
+\[
+p_A(t)=t^n-(0)t^{n-1}+(0)t^{n-2}-\cdots+(-1)^n(0)
+\]
+
+\[
+p_A(t)=t^n
+\]
+
+As raízes do polinômio característico são os autovalores da matriz. As raízes de $p_A(t)=t^n$ são $t=0$
+com multiplicidade $n$.
+Concluímos, de forma inequívoca, que o único autovalor da matriz $A$ é $\lambda=0$.
+
+\textbf{Passo 5: A Conclusão Final}
+
+Chegamos ao ponto crucial. Nós estabelecemos que a hipótese $\mathrm{tr}(A^k)=0$ para todo $k \geq 1$
+implica que a matriz $A$ tem somente o autovalor $0$.
+
+Conforme rigorosamente demonstrado no Exercício 1, "se uma matriz $n\times n$ complexa $A$ tem
+somente $0$ como autovalor, então $A$ é nilpotente".
+
+Portanto, por consequência direta do resultado anterior e da nossa dedução, a matriz $A$ é nilpotente.
+
+\textbf{Quod Erat Demonstrandum (Q.E.D.)}

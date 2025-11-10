@@ -1,0 +1,23 @@
+# Arquivos de saída do LaTeX
+*.aux
+*.log
+*.out
+*.toc
+*.lof
+*.lot
+*.fls
+*.fdb_latexmk
+*.nav
+*.snm
+*.vrb
+*.ind
+*.idx
+
+# Arquivos de backup do editor
+*~
+
+# Outros arquivos temporários/compilados
+*.synctex.gz
+
+# Diretório de saída (se você usa -output-directory)
+output/

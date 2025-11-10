@@ -1,0 +1,187 @@
+A questão que se nos apresenta é de uma beleza e simetria notáveis. Ela nos convida a elevar nossa
+perspectiva, tratando não de vetores em $F^n$, mas de matrizes como vetores em um espaço de
+dimensão $n^2$. O operador em questão, $T(X) = AX - XA$, conhecido como o \textit{comutador} com
+$A$ (ou, em contextos mais avançados como a teoria de Álgebras de Lie, a representação adjunta
+$\operatorname{ad}_A$), é de importância central em muitas áreas da matemática e da física.
+
+A prova de que a diagonalizabilidade de $A$ implica a de $T$ é um resultado clássico e elegante.
+Apresentarei duas demonstrações canônicas: a primeira, abstrata e veloz, utilizando a teoria de
+polinômios minimais; a segunda, construtiva e explícita, que revela os autovetores e autovalores de $T$.
+
+\textbf{Enunciado do Problema:}
+
+Seja $A \in M_n(F)$ onde $F$ é um corpo qualquer. Seja $T$ um operador linear de $M_n(F)$ definido por
+\[
+T(X) = AX - XA.
+\]
+Prove que se $A$ é diagonalizável, então $T$ é diagonalizável.
+
+\subsection*{Demonstração 1 (Via Polinômios Minimais e Operadores Comutantes)}
+
+Esta abordagem é paradigmática da força do pensamento algébrico abstrato.
+
+\textbf{Passo 1: Decompondo o Operador $T$}
+
+Definimos dois operadores lineares sobre o espaço vetorial $V = M_n(F)$:
+
+1. O operador de multiplicação à esquerda por $A$: $L_A(X) = AX$.
+
+2. O operador de multiplicação à direita por $A$: $R_A(X) = XA$.
+
+Com esta notação, nosso operador $T$ é simplesmente a diferença:
+\[
+T = L_A - R_A
+\]
+
+\textbf{Passo 2: Invocando um Teorema Fundamental}
+
+Recorremos a um teorema poderoso da teoria de operadores:
+
+\textbf{Teorema:} Se $S_1$ e $S_2$ são operadores lineares diagonalizáveis em um espaço vetorial $V$ e eles
+comutam ($S_1S_2 = S_2S_1$), então eles são simultaneamente diagonalizáveis. Em particular, qualquer
+combinação linear deles, como $S_1 - S_2$, também é diagonalizável.
+
+Para aplicar este teorema, precisamos provar três fatos:
+
+a) $L_A$ é diagonalizável. \\
+b) $R_A$ é diagonalizável. \\
+c) $L_A$ e $R_A$ comutam.
+
+\textbf{Passo 3: Provando as Condições do Teorema}
+
+\textbullet\ \textbf{Prova de (a) e (b):} \\
+Um operador é diagonalizável se, e somente se, seu polinômio minimal se fatora em fatores
+lineares distintos sobre o corpo $F$.
+
+A hipótese é que a matriz $A$ é diagonalizável. Portanto, seu polinômio minimal, $m_A(x)$, fatora-se
+em fatores lineares distintos em $F[x]$.
+
+Seja $m_A(x) = c_k x^k + \cdots + c_0$. Por definição, $m_A(A) = c_k A^k + \cdots + c_0 I = 0$.
+
+Consideremos o operador $m_A(L_A)$:
+\[
+m_A(L_A)(X) = (c_k L_A^k + \cdots + c_0 I)(X) = c_k A^k X + \cdots + c_0 X = (c_k A^k + \cdots + c_0 I)X.
+\]
+
+Como $m_A(L_A)$ é o operador nulo, o polinômio minimal de $L_A$, denotado $m_{L_A}(x)$, deve dividir
+$m_A(x)$. Como $m_A(x)$ se fatora em fatores lineares distintos, o mesmo deve ocorrer com
+$m_{L_A}(x)$. Logo, $L_A$ é \textbf{diagonalizável}.
+
+De forma análoga para $R_A$:
+\[
+m_A(R_A)(X) = (c_k R_A^k + \cdots + c_0 I)(X) = X(c_k A^k) + \cdots + X c_0 = X(c_k A^k + \cdots + c_0 I).
+\]
+
+O polinômio minimal $m_{R_A}(x)$ deve dividir $m_A(x)$, e portanto $R_A$ é diagonalizável.
+
+\textbullet\ \textbf{Prova de (c):} \\
+Devemos mostrar que $L_A R_A = R_A L_A$. Apliquemos a ambos os lados a uma matriz $X$ genérica:
+
+\[
+(L_A R_A)(X) = L_A(R_A(X)) = L_A(XA) = A(XA)
+\]
+\[
+(R_A L_A)(X) = R_A(L_A(X)) = R_A(AX) = (AX)A
+\]
+
+Pela associatividade da multiplicação de matrizes, $A(XA) = (AX)A$. Logo, os operadores
+$L_A$ e $R_A$ comutam.
+
+\textbf{Passo 4: Conclusão da Prova 1}
+
+Como $L_A$ e $R_A$ são operadores diagonalizáveis que comutam, pelo teorema invocado, sua diferença
+$T = L_A - R_A$ também é \textbf{diagonalizável. Q.E.D.}
+
+\subsection*{Demonstração 2 (Construtiva por Semelhança)}
+
+Esta abordagem é mais concreta, pois revela a natureza dos autovalores e autovetores de $T$.
+
+\textbf{Passo 1: Utilizando a Diagonalização de $A$}
+
+Por hipótese, $A$ é diagonalizável. Logo, existe uma matriz inversível $P$ tal que
+$D = P^{-1}AP$ é uma matriz diagonal. Sejam $\lambda_1, \ldots, \lambda_n$ as entradas na diagonal de $D$, que são os autovalores de $A$.
+\[
+D = \operatorname{diag}(\lambda_1, \lambda_2, \ldots, \lambda_n)
+\]
+
+\textbf{Passo 2: Definindo um Operador Semelhante}
+
+Considere o operador análogo a $T$, mas definido usando a matriz diagonal $D$:
+\[
+T_D(Y) = DY - YD
+\]
+
+Vamos mostrar que os operadores $T$ e $T_D$ são semelhantes. Para isso, definimos um operador de
+"mudança de base" no espaço $M_n(F)$, a conjugação por $P$:
+\[
+\mathcal{P} : M_n(F) \to M_n(F) \quad \text{dado por} \quad \mathcal{P}(X) = PXP^{-1}
+\]
+
+Este é um isomorfismo de espaços vetoriais, cujo inverso é $\mathcal{P}^{-1}(Y) = P^{-1}YP$.
+
+Vamos calcular a conjugação de $T$ por $\mathcal{P}$:
+\[
+(\mathcal{P}^{-1} T \mathcal{P})(Y) = \mathcal{P}^{-1}(T(\mathcal{P}(Y)))
+= P^{-1}(T(PYP^{-1}))P
+\]
+\[
+= P^{-1}\big( A(PYP^{-1}) - (PYP^{-1})A \big)P
+\]
+\[
+= (P^{-1}AP)(Y)(P^{-1}P) - (P^{-1}P)(Y)(P^{-1}AP) \quad (\text{distribuindo $P$ e $P^{-1}$})
+\]
+\[
+= DYI - IYD
+\]
+\[
+= DY - YD = T_D(Y)
+\]
+
+Isso prova que $T_D = \mathcal{P}^{-1}T\mathcal{P}$, ou seja, $T$ e $T_D$ são operadores semelhantes. A
+diagonalizabilidade é uma propriedade invariante por semelhança. Portanto, se provarmos que $T_D$ é
+diagonalizável, $T$ também o será.
+
+\textbf{Passo 3: Diagonalizando $T_D$}
+
+Nosso objetivo agora é encontrar uma base de autovetores (matrizes) para o operador $T_D$.
+Consideremos a base canônica do espaço $M_n(F)$, que consiste nas matrizes $E_{ij}$ (com 1 na posição
+$(i,j)$ e 0 nas demais). Vamos aplicar $T_D$ a uma dessas matrizes:
+\[
+T_D(E_{ij}) = DE_{ij} - E_{ij}D
+\]
+
+Analisemos cada termo separadamente.
+
+\textbullet\ A multiplicação $DE_{ij}$ resulta em uma matriz cujo único elemento não nulo está na posição
+$(i,j)$ e vale $\lambda_i$. Ou seja:
+\[
+DE_{ij} = \lambda_i E_{ij}
+\]
+
+\textbullet\ A multiplicação $E_{ij}D$ resulta em uma matriz cujo único elemento não nulo está na posição
+$(i,j)$ e vale $\lambda_j$. Ou seja:
+\[
+E_{ij}D = \lambda_j E_{ij}
+\]
+
+Substituindo de volta na expressão para $T_D(E_{ij})$:
+\[
+T_D(E_{ij}) = \lambda_i E_{ij} - \lambda_j E_{ij} = (\lambda_i - \lambda_j)E_{ij}
+\]
+
+Esta equação é da forma $T_D(X) = \mu X$. Ela nos mostra que cada matriz da base canônica, $E_{ij}$, é
+um \textbf{autovetor} do operador $T_D$. O autovalor associado a $E_{ij}$ é $\mu_{ij} = \lambda_i - \lambda_j$.
+
+\textbf{Passo 4: Conclusão da Prova 2}
+
+Encontramos um conjunto de $n^2$ autovetores de $T_D$, a saber, as matrizes $\{E_{ij}\}_{1 \leq i,j \leq n}$.
+Este conjunto constitui uma base para o espaço $M_n(F)$.
+
+Um operador que possui uma base de autovetores para seu domínio é, por definição, diagonalizável.
+Logo, $T_D$ é diagonalizável.
+
+Como $T$ é semelhante a $T_D$, e $T_D$ é diagonalizável, segue-se que o operador $T$ também é
+\textbf{diagonalizável. Q.E.D.}
+
+Esta segunda prova ainda nos revela que os $n^2$ autovalores do operador $T$ são todas as possíveis
+diferenças $\lambda_i - \lambda_j$ entre os autovalores da matriz $A$.

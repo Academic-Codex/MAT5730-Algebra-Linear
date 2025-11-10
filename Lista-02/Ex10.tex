@@ -1,0 +1,138 @@
+O problema que se nos apresenta hoje é uma joia da Álgebra Linear, uma proposição que tece uma
+conexão profunda e elegante entre três conceitos centrais: o espectro de autovalores de um
+operador, sua estrutura geométrica (diagonalizabilidade) e sua dinâmica (a existência de um vetor
+cíclico).
+
+Vamos provar esta equivalência com o rigor e a clareza que caracterizam nossa disciplina,
+demonstrando as duas implicações da proposição "se e somente se".
+
+\textbf{Enunciado do Problema:} \\
+Seja $V$ um espaço vetorial de dimensão $n$ sobre um corpo $K$. Seja $T$ um operador linear de $V$.
+Prove que $T$ possui $n$ autovalores distintos se e somente se $T$ é diagonalizável e tem um vetor cíclico.
+
+\subsection*{Demonstração}
+
+Esta é uma proposição de equivalência, que exige a prova de duas implicações separadas.
+
+\subsubsection*{Parte 1: Implicação Direta ($\Rightarrow$)}
+
+\textbf{Hipótese:} O operador $T$ possui $n$ autovalores distintos em $K$, digamos
+$\lambda_1, \lambda_2, \ldots, \lambda_n$. \\
+
+\textbf{Tese:} O operador $T$ é diagonalizável e possui um vetor cíclico.
+
+Vamos provar cada parte da tese separadamente.
+
+\paragraph{a) Prova de que $T$ é diagonalizável.}
+\begin{itemize}
+    \item Sejam $v_1, v_2, \ldots, v_n$ autovetores não nulos correspondentes aos autovalores distintos
+    $\lambda_1, \lambda_2, \ldots, \lambda_n$. Assim, $T(v_i) = \lambda_i v_i$ para cada $i$.
+    \item Invocamos um teorema fundamental da teoria espectral: \textbf{Autovetores associados a
+    autovalores distintos são linearmente independentes}.
+    \item Portanto, o conjunto de autovetores $\{v_1, v_2, \ldots, v_n\}$ é um conjunto linearmente
+    independente.
+    \item Temos um conjunto de $n$ vetores linearmente independentes em um espaço vetorial $V$ de
+    dimensão $n$. Por definição, este conjunto constitui uma \textbf{base} para $V$.
+    \item Um operador linear é dito diagonalizável se, e somente se, existe uma base do espaço vetorial
+    consistindo inteiramente de seus autovetores.
+    \item Como acabamos de encontrar tal base, concluímos que \textbf{$T$ é diagonalizável}.
+\end{itemize}
+
+\paragraph{b) Prova de que $T$ possui um vetor cíclico.}
+Um vetor $v \in V$ é dito cíclico para $T$ se o conjunto
+$\{v, T(v), T^2(v), \ldots, T^{n-1}(v)\}$ forma uma base para $V$. Vamos construir explicitamente tal vetor.
+
+\begin{itemize}
+    \item Sejam $v_1, v_2, \ldots, v_n$ os autovetores linearmente independentes da parte (a).
+    \item Considere o vetor $v$ definido pela soma destes autovetores:
+    \[
+        v = v_1 + v_2 + \cdots + v_n
+    \]
+    \item Vamos mostrar que o conjunto
+    $\mathcal{B} = \{v, T(v), \ldots, T^{n-1}(v)\}$ é linearmente independente.
+    \item Calculemos a ação de potências de $T$ sobre $v$:
+    \[
+        T^k(v) = T^k(v_1 + \cdots + v_n) = T^k(v_1) + \cdots + T^k(v_n) = \lambda_1^k v_1 + \cdots + \lambda_n^k v_n
+    \]
+    \item Agora, considere uma combinação linear nula dos vetores em $\mathcal{B}$:
+    \[
+        c_0 v + c_1 T(v) + \cdots + c_{n-1} T^{n-1}(v) = 0
+    \]
+    \item Substituindo as expressões para $T^k(v)$:
+    \[
+        \sum_{j=0}^{n-1} c_j T^j(v) =
+        \sum_{j=0}^{n-1} c_j \left( \sum_{i=1}^n \lambda_i^j v_i \right) = 0
+    \]
+    \item Trocando a ordem dos somatórios (uma operação válida em somas finitas):
+    \[
+        \sum_{i=1}^n \left( \sum_{j=0}^{n-1} c_j \lambda_i^j \right) v_i = 0
+    \]
+    \item Seja $q(x) = c_0 + c_1 x + \cdots + c_{n-1}x^{n-1}$ um polinômio em $K[x]$. A equação acima pode ser
+    escrita como:
+    \[
+        q(\lambda_1)v_1 + q(\lambda_2)v_2 + \cdots + q(\lambda_n)v_n = 0
+    \]
+    \item Como os autovetores $v_1, \ldots, v_n$ formam uma base, eles são linearmente independentes.
+    Portanto, todos os coeficientes escalares nesta combinação linear devem ser nulos:
+    \[
+        q(\lambda_i) = 0 \quad \text{para todo } i = 1, \ldots, n
+    \]
+    \item Isto nos diz que o polinômio $q(x)$, que tem grau no máximo $n-1$, possui $n$ raízes distintas
+    ($\lambda_1, \ldots, \lambda_n$).
+    \item Um polinômio não nulo de grau $d$ pode ter no máximo $d$ raízes. A única forma de um polinômio
+    de grau $\leq n-1$ ter $n$ raízes distintas é se ele for o polinômio nulo.
+    \item Portanto, $q(x) = 0$, o que implica que todos os seus coeficientes são nulos:
+    $c_0 = c_1 = \cdots = c_{n-1} = 0$.
+    \item Isso prova que o conjunto $\mathcal{B}$ é linearmente independente. Sendo um conjunto com $n$
+    vetores L.I. em um espaço de dimensão $n$, ele é uma base.
+    \item Concluímos que \textbf{$v$ é um vetor cíclico para $T$}.
+\end{itemize}
+
+Assim, a implicação direta está provada.
+
+\subsubsection*{Parte 2: Implicação Recíproca ($\Leftarrow$)}
+
+\textbf{Hipótese:} O operador $T$ é diagonalizável e possui um vetor cíclico. \\
+
+\textbf{Tese:} O operador $T$ possui $n$ autovalores distintos.
+
+Procederemos por contradição.
+\begin{itemize}
+    \item Suponhamos que $T$ não possui $n$ autovalores distintos. Sejam $\mu_1, \mu_2, \ldots, \mu_d$
+    os autovalores distintos de $T$, onde $d < n$.
+    \item Analisemos as consequências de cada parte da hipótese:
+    \begin{enumerate}
+        \item \textbf{$T$ é diagonalizável:} Um operador é diagonalizável se, e somente se, seu polinômio
+        minimal $m_T(x)$ se fatora em fatores lineares distintos. As raízes do polinômio minimal são
+        precisamente os autovalores distintos do operador. Portanto:
+        \[
+            m_T(x) = (x - \mu_1)(x - \mu_2)\cdots(x - \mu_d)
+        \]
+        O grau do polinômio minimal é, consequentemente, $\deg(m_T) = d$.
+        \item \textbf{$T$ possui um vetor cíclico:} Um teorema fundamental afirma que um operador possui
+        um vetor cíclico se, e somente se, seu polinômio minimal é igual ao seu polinômio
+        característico.
+    \end{enumerate}
+    \item Agora, confrontemos estas duas conclusões.
+    \begin{itemize}
+        \item Da primeira, temos que $\deg(m_T) = d$.
+        \item Da segunda, temos que $m_T(x) = p_T(x)$. Sabemos que o grau do polinômio característico
+        $p_T(x)$ é sempre igual à dimensão do espaço, que é $n$. Logo, $\deg(m_T) = \deg(p_T) = n$.
+    \end{itemize}
+    \item Isso nos leva a uma igualdade direta: $d = n$.
+    \item No entanto, nossa suposição inicial para a prova por contradição foi que o número de
+    autovalores distintos era $d < n$. A conclusão $d = n$ contradiz frontalmente a suposição
+    $d < n$.
+    \item A contradição surgiu da suposição de que $T$ não possuía $n$ autovalores distintos. Portanto,
+    essa suposição deve ser falsa.
+    \item Concluímos que \textbf{$T$ deve possuir $n$ autovalores distintos}.
+\end{itemize}
+
+A implicação recíproca está provada.
+
+\subsection*{Conclusão}
+
+Tendo provado ambas as implicações, estabelecemos a equivalência. Um operador sobre um espaço
+de dimensão $n$ ter um espectro "completo" de $n$ autovalores distintos é a condição algébrica precisa
+que garante simultaneamente a mais simples estrutura geométrica (ser diagonalizável) e a mais rica
+estrutura dinâmica (possuir um vetor cíclico que gera todo o espaço sob a ação do operador).

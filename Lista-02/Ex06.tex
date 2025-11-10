@@ -1,0 +1,153 @@
+\subsection*{Resolução Completa (Versão Reformatada)}
+
+\textbf{Enunciado do Problema:}
+
+Seja $V$ um espaço vetorial de dimensão finita sobre o corpo $K$ e seja $T : V \to V$ um operador linear tal que os únicos subespaços invariantes sob $T$ são $\{0\}$ e $V$.
+
+\begin{enumerate}[label=\alph*)]
+    \item Prove que o polinômio minimal de $T$ coincide com o polinômio característico de $T$ e é irredutível.
+    \item Prove que todo operador linear de $V$ que comuta com $T$ é um polinômio em $T$.
+    \item Seja $K[T] = \{ p(T) \mid p(x) \in K[x]\}$. Prove que $K[T]$ é um corpo.
+\end{enumerate}
+
+\subsubsection*{Parte a) Análise dos Polinômios Minimal e Característico}
+
+Esta parte da prova se desdobra em duas afirmações: a irredutibilidade do polinômio minimal e sua igualdade com o polinômio característico.
+
+\textbf{1. O polinômio minimal $m_T(x)$ é irredutível sobre $K$.}
+
+Procederemos por contradição. Suponhamos que $m_T(x)$ seja redutível sobre $K$. Então, existem polinômios não constantes $f(x), g(x) \in K[x]$ tais que:
+\[
+m_T(x) = f(x) g(x)
+\]
+com $\deg(f) < \deg(m_T)$ e $\deg(g) < \deg(m_T)$.
+
+Consideremos o subespaço $W = \ker(f(T))$, o núcleo do operador $f(T)$.
+
+\begin{itemize}
+    \item $W$ não é o subespaço nulo $\{0\}$. Se fosse, $f(T)$ seria um operador injetor e, portanto, inversível (pois $V$ tem dimensão finita). Se $f(T)$ fosse inversível, poderíamos aplicar seu inverso a $m_T(T) = f(T)g(T) = 0$ para obter $g(T) = 0$. Mas isto contradiz a minimalidade de $m_T(x)$, pois $\deg(g) < \deg(m_T)$. Logo, $W \neq \{0\}$.
+    \item $W$ não é o espaço todo $V$. Se $W = V$, então $f(T)$ seria o operador nulo, $f(T) = 0$. Novamente, isto contradiz a minimalidade de $m_T(x)$, pois $\deg(f) < \deg(m_T)$. Logo, $W \neq V$.
+\end{itemize}
+
+Até aqui, estabelecemos que $W = \ker(f(T))$ é um subespaço \textbf{não trivial}. Agora, provemos que ele é $T$-invariante.
+
+Seja $v \in W$. Por definição, $f(T)(v) = 0$. Devemos mostrar que $T(v) \in W$. Para tal, aplicamos $f(T)$ a $T(v)$:
+\[
+f(T)(T(v))
+\]
+Como o operador $T$ comuta com qualquer polinômio em $T$ (como $f(T)$), temos:
+\[
+f(T)(T(v)) = T(f(T)(v)) = T(0) = 0
+\]
+Isso mostra que $T(v) \in \ker(f(T)) = W$. Portanto, $W$ é um subespaço $T$-invariante.
+
+Encontramos um subespaço $W$ tal que $\{0\} \subsetneq W \subsetneq V$ que é $T$-invariante. Isto é uma contradição direta da hipótese do problema. Logo, nossa suposição inicial de que $m_T(x)$ é redutível deve ser falsa.
+
+Concluímos que $m_T(x)$ é irredutível sobre $K$.
+
+\textbf{2. O polinômio minimal $m_T(x)$ coincide com o polinômio característico $p_T(x)$.}
+
+Seja $v$ um vetor não nulo qualquer em $V$. Considere o subespaço $W_v = \{ p(T)(v) \mid p(x) \in K[x]\}$. Este é o menor subespaço $T$-invariante que contém $v$.
+
+\begin{itemize}
+    \item Como $v \neq 0$, $W_v \neq \{0\}$.
+    \item Pela hipótese do problema, os únicos subespaços $T$-invariantes são $\{0\}$ e $V$.
+    \item Portanto, devemos ter $W_v = V$.
+\end{itemize}
+
+Isto significa que para qualquer $v \neq 0$, o vetor $v$ é um \textbf{vetor cíclico} para o operador $T$.
+
+Um teorema fundamental da Álgebra Linear afirma que a existência de um vetor cíclico é equivalente à condição de que o polinômio minimal coincida com o polinômio característico.
+
+\[
+\deg(m_T) = \dim(V) = \deg(p_T)
+\]
+
+Como ambos são mônicos e têm o mesmo grau, e sabemos que $m_T(x)$ divide $p_T(x)$, eles devem ser iguais.
+
+Portanto, $m_T(x) = p_T(x)$. Juntando os resultados, $m_T(x) = p_T(x)$ e este polinômio é irredutível sobre $K$.
+
+\subsubsection*{Parte b) Operadores que comutam com $T$}
+
+Seja $S : V \to V$ um operador linear tal que $ST = TS$. Devemos provar que $S$ é um polinômio em $T$, i.e., $S \in K[T]$.
+
+Como vimos na parte (a), qualquer vetor não nulo $v \in V$ é um vetor cíclico. Fixemos um desses vetores, $v_0 \neq 0$.
+
+Se $v_0$ é um vetor cíclico e $\dim(V) = n$, então o conjunto
+\[
+\mathcal{B} = \{ v_0, T(v_0), T^2(v_0), \ldots, T^{n-1}(v_0) \}
+\]
+forma uma base para $V$.
+
+O vetor $S(v_0)$ está em $V$. Logo, ele pode ser escrito de forma única como uma combinação linear dos vetores da base $\mathcal{B}$:
+\[
+S(v_0) = c_0 v_0 + c_1 T(v_0) + \cdots + c_{n-1}T^{n-1}(v_0)
+\]
+para alguns escalares $c_0, c_1, \ldots, c_{n-1} \in K$.
+
+Seja $q(x) = c_0 + c_1x + \cdots + c_{n-1}x^{n-1}$ o polinômio com estes coeficientes. A equação acima pode ser reescrita como:
+\[
+S(v_0) = q(T)(v_0)
+\]
+
+Agora, vamos mostrar que o operador $S$ e o operador $q(T)$ são, de fato, o mesmo operador. Para isso, basta mostrar que eles coincidem em todos os vetores da base $\mathcal{B}$. Consideremos um vetor genérico da base, $T^k(v_0)$, para $0 \leq k < n$.
+\[
+S(T^k(v_0))
+\]
+
+Como $S$ e $T$ comutam, $ST^k = T^k S$. Logo:
+\[
+S(T^k(v_0)) = T^k(S(v_0))
+\]
+Substituindo a expressão para $S(v_0)$:
+\[
+T^k(S(v_0)) = T^k(q(T)(v_0))
+\]
+
+Como $T^k$ e $q(T)$ são ambos polinômios em $T$, eles comutam:
+\[
+T^k(q(T)(v_0)) = q(T)(T^k(v_0))
+\]
+
+Assim, demonstramos que $S(T^k(v_0)) = q(T)(T^k(v_0))$ para todo $k = 0, \ldots, n-1$.
+
+Os operadores lineares $S$ e $q(T)$ coincidem em todos os vetores de uma base de $V$. Por linearidade, eles devem ser o mesmo operador.
+
+Portanto, $S = q(T)$, o que prova que $S$ é um polinômio em $T$.
+
+\subsubsection*{Parte c) $K[T]$ é um Corpo}
+
+O conjunto $K[T] = \{p(T) \mid p(x) \in K[x]\}$ é o conjunto de todos os operadores que são polinômios em $T$. Com as operações usuais de adição e composição de operadores, $K[T]$ forma um anel comutativo com identidade. Para provar que é um corpo, devemos mostrar que todo elemento não nulo possui um inverso multiplicativo dentro do próprio conjunto.
+
+Seja $q(T)$ um elemento não nulo de $K[T]$. Isto significa que $q(T)$ não é o operador nulo. Se $q(T) \neq 0$, então o polinômio $q(x)$ não pode ser um múltiplo do polinômio minimal $m_T(x)$.
+
+Da parte (a), sabemos que o polinômio minimal $m_T(x)$ é irredutível sobre $K$.
+
+Temos, portanto, dois polinômios em $K[x]$: $q(x)$ e $m_T(x)$, onde $m_T(x)$ é irredutível e não divide $q(x)$. Isto implica que $q(x)$ e $m_T(x)$ são \textbf{primos entre si} (coprimos). O máximo divisor comum é 1: $\mdc(q(x), m_T(x)) = 1$.
+
+Pela identidade de Bézout para polinômios, existem polinômios $a(x), b(x) \in K[x]$ tais que:
+\[
+a(x)q(x) + b(x)m_T(x) = 1
+\]
+
+Esta é uma identidade no anel de polinômios $K[x]$. Podemos "avaliar" esta identidade no operador $T$:
+\[
+a(T)q(T) + b(T)m_T(T) = I
+\]
+onde $I$ é o operador identidade.
+
+Por definição do polinômio minimal, $m_T(T) = 0$ (o operador nulo). A equação se simplifica para:
+\[
+a(T)q(T) + b(T)\cdot 0 = I
+\]
+\[
+a(T)q(T) = I
+\]
+
+Isto mostra que o operador $a(T)$ é o inverso multiplicativo de $q(T)$. Como $a(x)$ é um polinômio, $a(T)$ é um elemento de $K[T]$.
+
+Demonstramos que todo elemento não nulo $q(T) \in K[T]$ possui um inverso $a(T)$ que também pertence a $K[T]$.
+
+Portanto, \[
+K[T] \text{ é um corpo.}
+\]

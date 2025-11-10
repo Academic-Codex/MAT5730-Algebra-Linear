@@ -1,0 +1,144 @@
+Hoje nos debruçaremos sobre uma questão elegante que conecta os conceitos de autovalores e a
+estrutura de uma matriz. A proposição a ser demonstrada é um pilar na compreensão dos
+operadores nilpotentes, e sua prova revela a beleza e a força do Teorema de Cayley-Hamilton.
+
+\subsection*{Enunciado do Problema:}
+
+Mostre que se uma matriz $A \in M_n(\mathbb{C})$ (uma matriz de ordem $n \times n$ com entradas complexas) tem
+somente o escalar $0$ como autovalor, então $A$ é nilpotente. Isto é, existe um inteiro positivo $k$ tal que
+$A^k = 0$, onde $0$ é a matriz nula de ordem $n \times n$.
+
+\subsection*{Demonstração Canônica}
+
+Para provar esta afirmação com o rigor que a nossa disciplina exige, seguiremos um caminho
+axiomático, fundamentado em um dos teoremas mais profundos da Álgebra Linear.
+
+\subsubsection*{Passo 1: O Polinômio Característico}
+
+A pedra angular para o estudo de autovalores é o polinômio característico. Por definição, o polinômio
+característico da matriz $A$, denotado por $p_A(t)$, é dado por:
+
+\[
+p_A(t) = \det(A - tI_n)
+\]
+
+onde $I_n$ é a matriz identidade de ordem $n$.
+
+Sabemos, por um teorema fundamental, que as raízes do polinômio característico são precisamente
+os autovalores da matriz $A$.
+
+\subsubsection*{Passo 2: Aplicando a Hipótese do Problema}
+
+A hipótese que nos foi dada é que o \textbf{único} autovalor de $A$ é $\lambda = 0$.
+
+Se $0$ é a única raiz do polinômio $p_A(t)$ sobre o corpo dos números complexos $\mathbb{C}$, então, pelo
+Teorema Fundamental da Álgebra, este polinômio deve ser fatorado de uma forma muito específica.
+Um polinômio de grau $n$ que possui apenas a raiz $t=0$ com multiplicidade algébrica $n$ deve ter a
+forma:
+
+\[
+p_A(t) = c \cdot (t-0)^n = c \cdot t^n
+\]
+
+onde $c$ é uma constante.
+
+Precisamos determinar o valor desta constante $c$. Vamos expandir o determinante que define $p_A(t)$:
+
+\[
+p_A(t) = \det(A - tI_n) =
+\begin{vmatrix}
+a_{11} - t & a_{12} & \cdots & a_{1n} \\
+a_{21} & a_{22} - t & \cdots & a_{2n} \\
+\vdots & \vdots & \ddots & \vdots \\
+a_{n1} & a_{n2} & \cdots & a_{nn} - t
+\end{vmatrix}
+\]
+
+O termo de maior grau em $t$ neste polinômio é obtido pelo produto dos elementos da diagonal
+principal:
+
+\[
+(a_{11} - t)(a_{22} - t)\cdots(a_{nn} - t) = (-1)^n t^n + \text{termos de grau inferior}
+\]
+
+Ao comparar o termo líder, $(-1)^n t^n$, com a forma $c \cdot t^n$, concluímos que a constante $c$ deve ser
+$(-1)^n$.
+
+Portanto, o polinômio característico da matriz $A$ é, inequivocamente:
+
+\[
+p_A(t) = (-1)^n t^n
+\]
+
+\subsubsection*{Passo 3: A Invocação do Teorema de Cayley-Hamilton}
+
+O Teorema de Cayley-Hamilton é uma das joias da nossa área. Ele afirma que toda matriz quadrada
+anula seu próprio polinômio característico. Formalmente:
+
+\textbf{Teorema (Cayley-Hamilton):} Se $p_A(t)$ é o polinômio característico de uma matriz $A$, então
+$p_A(A) = 0$.
+
+Isso significa que se substituirmos a variável $t$ pela matriz $A$ na expressão do polinômio
+característico, o resultado será a matriz nula.
+
+\subsubsection*{Passo 4: A Conclusão da Prova}
+
+Vamos agora aplicar este poderoso teorema ao nosso resultado do Passo 2. Temos:
+
+\[
+p_A(t) = (-1)^n t^n
+\]
+
+Segundo Cayley-Hamilton, devemos ter $p_A(A) = 0$. Substituindo $t$ por $A$:
+
+\[
+p_A(A) = (-1)^n A^n
+\]
+
+Logo, o teorema nos garante que:
+
+\[
+(-1)^n A^n = 0
+\]
+
+Como $(-1)^n$ é um escalar não nulo (pode ser $1$ ou $-1$), podemos multiplicar ambos os lados da
+equação pelo seu inverso, que é ele mesmo, $(-1)^n$.
+
+\[
+(-1)^n \cdot [(-1)^n A^n] = (-1)^n \cdot 0
+\]
+
+\[
+((-1)^{2n}) A^n = 0
+\]
+
+\[
+1 \cdot A^n = 0
+\]
+
+\[
+A^n = 0
+\]
+
+Demonstramos que $A^n$ é a matriz nula. Pela definição de uma matriz nilpotente, encontramos um
+inteiro positivo, a saber $k=n$, para o qual $A^k=0$.
+
+Portanto, a matriz $A$ é nilpotente.
+
+\subsection*{Quod Erat Demonstrandum (Q.E.D.)}
+
+\subsection*{Observações Finais}
+
+A beleza desta prova reside na sua abstração. Não precisamos em momento algum conhecer as
+entradas da matriz $A$. Apenas com a informação sobre seu espectro de autovalores, e armados com
+a ferramenta correta — o Teorema de Cayley-Hamilton —, a estrutura da matriz se revela.
+
+Uma prova alternativa, igualmente instrutiva, poderia ser construída utilizando a Forma Canônica de
+Jordan. Como o único autovalor é $0$, a forma de Jordan de $A$ seria uma matriz estritamente triangular
+superior (zeros na diagonal principal). É um exercício clássico provar que qualquer matriz
+estritamente triangular superior de ordem $n$ elevada à potência $n$ resulta na matriz nula. Como $A$ é
+semelhante à sua forma de Jordan $J$ (i.e., $A = PJP^{-1}$), teríamos $A^n = (PJP^{-1})^n =
+P J^n P^{-1} = P \cdot 0 \cdot P^{-1} = 0$. Ambas as abordagens levam à mesma conclusão inelutável.
+
+Estudem esta demonstração. Ela é um exemplo primoroso de como os conceitos teóricos que
+desenvolvemos nos permitem resolver problemas concretos de maneira concisa e poderosa.

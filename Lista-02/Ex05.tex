@@ -1,0 +1,170 @@
+\subsection*{Forma Canônica Racional}
+
+A questão diante de nós nos leva ao coração da teoria de formas canônicas, um dos cumes da Álgebra Linear. Especificamente, trataremos da \textbf{Forma Canônica Racional}, também conhecida como Forma Normal de Frobenius. Esta forma é de suma importância, pois, ao contrário da Forma de Jordan, ela existe para qualquer operador linear sobre um corpo arbitrário $\mathbb{F}$, sem a necessidade de o polinômio característico se fatorar completamente em fatores lineares sobre $\mathbb{F}$.
+
+Nosso problema trata de uma matriz real cujos autovalores são complexos. É precisamente neste cenário que a Forma Racional revela seu poder.
+
+\subsection*{Enunciado do Problema}
+
+Seja $A$ uma matriz real cujo polinômio característico é $p_A(x) = (x^2+1)^2(x^2+x+1)^2$.  
+Determine as possíveis formas racionais de $A$.
+
+\subsection*{Demonstração e Resolução}
+
+\subsubsection*{Passo 1: Fundamentos Teóricos da Forma Racional}
+
+A Forma Canônica Racional de uma matriz $A$ é uma matriz bloco-diagonal, onde cada bloco é uma \textit{matriz companheira} de um polinômio.
+
+\textbf{Definição (Matriz Companheira):} Para um polinômio mônico $q(x)=x^k+a_{k-1}x^{k-1}+\cdots+a_1x+a_0$, sua matriz companheira $C(q(x))$ é a matriz $k\times k$ dada por:
+
+\[
+C(q(x)) =
+\begin{pmatrix}
+0 & 0 & \cdots & 0 & -a_0 \\
+1 & 0 & \cdots & 0 & -a_1 \\
+0 & 1 & \cdots & 0 & -a_2 \\
+\vdots & \vdots & \ddots & \vdots & \vdots \\
+0 & 0 & \cdots & 1 & -a_{k-1}
+\end{pmatrix}
+\]
+
+Uma propriedade crucial de $C(q(x))$ é que seu polinômio característico (e também o minimal) é exatamente $q(x)$.
+
+\textbf{Teorema Fundamental:} Toda matriz $A$ é semelhante a uma única Forma Canônica Racional, que é a soma direta (matriz bloco-diagonal) das matrizes companheiras de seus \textbf{divisores elementares}.
+
+\[
+R = \operatorname{diag}(C(q_1(x)), C(q_2(x)), \dots, C(q_r(x)))
+\]
+
+Os divisores elementares $q_i(x)$ são potências de polinômios irredutíveis sobre o corpo em questão (no nosso caso, $\mathbb{R}$).
+
+A relação entre os divisores elementares e os polinômios da matriz é a seguinte:
+\begin{enumerate}
+\item \textbf{Polinômio Característico:} $p_A(x) = q_1(x)\cdot q_2(x)\cdots q_r(x)$.
+\item \textbf{Polinômio Minimal:} $m_A(x)$ é o mínimo múltiplo comum (MMC) de todos os divisores elementares $\{q_1(x), \dots, q_r(x)\}$.
+\end{enumerate}
+
+\subsubsection*{Passo 2: Análise do Polinômio Característico}
+
+O polinômio característico dado é $p_A(x) = (x^2+1)^2(x^2+x+1)^2$.
+
+Primeiro, devemos encontrar seus fatores irredutíveis sobre $\mathbb{R}$.
+
+\begin{itemize}
+\item Seja $f_1(x)=x^2+1$. O discriminante é $\Delta=0^2-4(1)(1)=-4<0$. Logo, $f_1(x)$ é irredutível sobre $\mathbb{R}$.
+\item Seja $f_2(x)=x^2+x+1$. O discriminante é $\Delta=1^2-4(1)(1)=-3<0$. Logo, $f_2(x)$ também é irredutível sobre $\mathbb{R}$.
+\end{itemize}
+
+Portanto, os divisores elementares de $A$ devem ser potências de $f_1(x)$ e $f_2(x)$.
+
+\subsubsection*{Passo 3: Determinando os Conjuntos de Divisores Elementares}
+
+As potências dos divisores elementares da forma $(x^2+1)^k$ devem somar $2$, e as potências dos fatores de $f_2(x)$ também devem somar $2$. Logo, há duas possibilidades para cada fator (partições do inteiro 2):
+
+\textbf{Para $(x^2+1)^2$:}
+\begin{itemize}
+\item Partição 1: $2 \implies \{(x^2+1)^2\}$.
+\item Partição 2: $1+1 \implies \{x^2+1, x^2+1\}$.
+\end{itemize}
+
+\textbf{Para $(x^2+x+1)^2$:}
+\begin{itemize}
+\item Partição A: $2 \implies \{(x^2+x+1)^2\}$.
+\item Partição B: $1+1 \implies \{x^2+x+1, x^2+x+1\}$.
+\end{itemize}
+
+Combinando, temos $2\times 2 = 4$ possibilidades.
+
+\subsubsection*{Passo 4: Construção das Possíveis Formas Racionais}
+
+\textbf{Caso 1: Partições (1) e (A)}
+\begin{itemize}
+\item Divisores Elementares: $\{(x^2+1)^2, (x^2+x+1)^2\}$.
+\item Polinômio Minimal: $m_A(x)=\operatorname{MMC}((x^2+1)^2,(x^2+x+1)^2)=(x^2+1)^2(x^2+x+1)^2=p_A(x)$.
+\item Polinômios: $q_1(x)=(x^2+1)^2=x^4+2x^2+1$, $q_2(x)=(x^2+x+1)^2=x^4+2x^3+3x^2+2x+1$.
+\item Forma Racional:
+\[
+R_1=\operatorname{diag}(C(q_1(x)),C(q_2(x)))
+\]
+\[
+R_1=\begin{pmatrix}
+0&0&0&-1&0&0&0&0\\
+1&0&0&0&0&0&0&0\\
+0&1&0&-2&0&0&0&0\\
+0&0&1&0&0&0&0&0\\
+0&0&0&0&0&0&0&-1\\
+0&0&0&0&1&0&0&-2\\
+0&0&0&0&0&1&0&-3\\
+0&0&0&0&0&0&1&-2
+\end{pmatrix}
+\]
+\end{itemize}
+
+\textbf{Caso 2: Partições (1) e (B)}
+\begin{itemize}
+\item Divisores Elementares: $\{(x^2+1)^2, x^2+x+1, x^2+x+1\}$.
+\item Polinômio Minimal: $m_A(x)=\operatorname{MMC}((x^2+1)^2, x^2+x+1)=(x^2+1)^2(x^2+x+1)$.
+\item Forma Racional:
+\[
+R_2=\operatorname{diag}(C((x^2+1)^2),C(x^2+x+1),C(x^2+x+1))
+\]
+\[
+R_2=\begin{pmatrix}
+0&0&0&-1&0&0\\
+1&0&0&0&0&0\\
+0&1&0&-2&0&0\\
+0&0&1&0&0&0\\
+0&0&0&0&0&-1\\
+0&0&0&0&1&-1
+\end{pmatrix}
+\]
+\end{itemize}
+
+\textbf{Caso 3: Partições (2) e (A)}
+\begin{itemize}
+\item Divisores Elementares: $\{x^2+1,x^2+1,(x^2+x+1)^2\}$.
+\item Polinômio Minimal: $m_A(x)=\operatorname{MMC}(x^2+1,(x^2+x+1)^2)=(x^2+1)(x^2+x+1)^2$.
+\item Forma Racional:
+\[
+R_3=\operatorname{diag}(C(x^2+1),C(x^2+1),C((x^2+x+1)^2))
+\]
+\[
+R_3=\begin{pmatrix}
+0&-1&0&0&0&0&0&0\\
+1&0&0&0&0&0&0&0\\
+0&0&0&-1&0&0&0&0\\
+0&0&1&0&0&0&0&0\\
+0&0&0&0&0&0&0&-1\\
+0&0&0&0&1&0&0&-2\\
+0&0&0&0&0&1&0&-3\\
+0&0&0&0&0&0&1&-2
+\end{pmatrix}
+\]
+\end{itemize}
+
+\textbf{Caso 4: Partições (2) e (B)}
+\begin{itemize}
+\item Divisores Elementares: $\{x^2+1,x^2+1,x^2+x+1,x^2+x+1\}$.
+\item Polinômio Minimal: $m_A(x)=\operatorname{MMC}(x^2+1,x^2+x+1)=(x^2+1)(x^2+x+1)$.
+\item Forma Racional:
+\[
+R_4=\operatorname{diag}(C(x^2+1),C(x^2+1),C(x^2+x+1),C(x^2+x+1))
+\]
+\[
+R_4=\begin{pmatrix}
+0&-1&0&0&0&0&0&0\\
+1&0&0&0&0&0&0&0\\
+0&0&0&-1&0&0&0&0\\
+0&0&1&0&0&0&0&0\\
+0&0&0&0&0&-1&0&0\\
+0&0&0&0&1&-1&0&0\\
+0&0&0&0&0&0&0&-1\\
+0&0&0&0&0&0&1&-1
+\end{pmatrix}
+\]
+\end{itemize}
+
+\subsection*{Conclusão}
+
+Existem exatamente \textbf{quatro} classes de semelhança para uma matriz real $A$ com o polinômio característico dado. Cada classe é representada por uma das quatro Formas Canônicas Racionais $R_1,R_2,R_3,R_4$.  
+A forma específica de $A$ dependerá de seu polinômio minimal, que pode ser um de quatro polinômios distintos.

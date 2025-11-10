@@ -1,0 +1,66 @@
+\subsection*{Enunciado do Problema}
+
+Seja $T$ um operador linear de $\mathbb{R}^4$ tal que:  
+(i) O polinômio $x^2 + 3$ é um divisor do polinômio minimal de $T$.  
+(ii) $1$ é o único autovalor de $T$.  
+
+Quais são as possíveis formas racionais de $T$?
+
+\subsection*{Análise e Resolução}
+
+Vamos analisar as duas condições impostas e extrair suas consequências lógicas, utilizando os teoremas basilares da nossa disciplina.
+
+\subsubsection*{Passo 1: A Consequência da Condição (ii)}
+
+A condição (ii) afirma que $1$ é o \textit{único} autovalor de $T$.
+
+\textbf{Teorema Fundamental:} O conjunto de autovalores de um operador linear $T$ (considerando o corpo algebraicamente fechado $\mathbb{C}$ para garantir que todas as raízes existam) é precisamente o conjunto de raízes de seu polinômio minimal, $m_T(x)$.
+
+A condição (ii) é categórica: o único autovalor é $\lambda = 1$. Isso significa que o conjunto de todas as raízes do polinômio minimal $m_T(x)$, sejam elas reais ou complexas, deve ser o conjunto unitário $\{1\}$.
+
+Se um polinômio possui apenas a raiz $1$, ele deve ser, necessariamente, da forma:
+\[
+m_T(x) = (x - 1)^k
+\]
+para algum inteiro positivo $k$.
+
+Portanto, a condição (ii) implica que o polinômio minimal de $T$ deve ser uma potência de $(x - 1)$.
+
+\subsubsection*{Passo 2: A Consequência da Condição (i)}
+
+A condição (i) afirma que o polinômio $x^2 + 3$ é um divisor do polinômio minimal de $T$.
+
+Isto significa que toda raiz do polinômio $x^2 + 3$ também deve ser uma raiz do polinômio minimal $m_T(x)$.
+
+Vamos encontrar as raízes de $x^2 + 3 = 0$:
+\[
+x^2 = -3
+\]
+\[
+x = \pm \sqrt{-3} = \pm i\sqrt{3}
+\]
+
+As raízes são os números complexos conjugados $i\sqrt{3}$ e $-i\sqrt{3}$.
+
+Portanto, a condição (i) implica que o conjunto de raízes de $m_T(x)$ deve conter o conjunto $\{i\sqrt{3}, -i\sqrt{3}\}$.
+
+\subsubsection*{Passo 3: A Contradição Lógica}
+
+Agora, confrontemos as conclusões extraídas de cada premissa:
+
+\begin{itemize}
+  \item Da condição (ii), concluímos que o conjunto de raízes de $m_T(x)$ é \textbf{exatamente} $\{1\}$.
+  \item Da condição (i), concluímos que o conjunto de raízes de $m_T(x)$ deve conter o conjunto $\{i\sqrt{3}, -i\sqrt{3}\}$.
+\end{itemize}
+
+Estas duas conclusões são mutuamente excludentes. O conjunto $\{1\}$ e o conjunto $\{i\sqrt{3}, -i\sqrt{3}\}$ são disjuntos. Um polinômio não pode, simultaneamente, ter apenas a raiz $1$ e também ter as raízes $i\sqrt{3}$ e $-i\sqrt{3}$.
+
+A interseção das duas condições impostas sobre o conjunto de raízes do polinômio minimal é vazia.
+
+\subsection*{Conclusão}
+
+As duas condições dadas no enunciado do problema são \textbf{logicamente contraditórias}. Não pode existir um operador linear $T$ sobre $\mathbb{R}^4$ que satisfaça ambas as propriedades simultaneamente.
+
+Portanto, o conjunto de ``possíveis formas racionais de $T$'' é o \textbf{conjunto vazio}, pois nenhum operador $T$ com estas características pode existir.
+
+Este exercício é um exemplo magistral que nos ensina uma lição vital: a importância da consistência. Ele nos força a invocar a relação canônica entre os invariantes de um operador, revelando que nem toda combinação de propriedades é matematicamente possível. A beleza da Álgebra Linear reside precisamente nesta estrutura rígida e harmoniosa.

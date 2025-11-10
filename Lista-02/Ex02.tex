@@ -1,0 +1,215 @@
+A questão que se nos apresenta é de uma beleza singular, pois trata de um dos operadores lineares
+mais fundamentais e visualizáveis: a projeção. Através de sua análise, veremos como a estrutura de
+decomposição de um espaço vetorial em soma direta reflete-se diretamente nas propriedades
+espectrais (autovalores, autovetores) e nos polinômios associados ao operador.
+
+Vamos dissecar o problema com a precisão que a Álgebra exige.
+
+\subsection*{Enunciado do Problema:}
+
+Seja $V$ um espaço vetorial tal que $V = W_1 \oplus W_2$, com $\dim(W_1)=n$ e $\dim(W_2)=m$. Seja
+$T:V \to V$ o operador linear de projeção de $V$ sobre $W_1$ ao longo de $W_2$. Determine os
+autovalores, os autovetores, o polinômio característico e o polinômio minimal de $T$.
+
+\subsection*{Resolução Detalhada}
+
+A chave para desvendar este problema reside na correta interpretação da definição de projeção no
+contexto de uma soma direta.
+
+A hipótese $V=W_1 \oplus W_2$ significa que todo vetor $v \in V$ pode ser escrito, de maneira \textit{única},
+como a soma $v=w_1+w_2$, onde $w_1 \in W_1$ e $w_2 \in W_2$.
+
+O operador $T$ é a projeção sobre $W_1$ ao longo de $W_2$. Por definição, sua ação sobre um vetor $v$ é
+dada por:
+
+\[
+T(v) = T(w_1+w_2)=w_1
+\]
+
+Com esta ferramenta fundamental em mãos, podemos proceder à análise.
+
+\subsubsection*{1. Autovalores e Autovetores}
+
+Por definição, um escalar $\lambda$ é um autovalor de $T$ se existe um vetor não nulo $v$ (o autovetor) tal que
+$T(v)=\lambda v$. Vamos investigar a ação de $T$ sobre os vetores dos subespaços $W_1$ e $W_2$.
+
+\textbf{Caso 1: Análise sobre o subespaço $W_1$}
+
+Seja $v$ um vetor não nulo pertencente a $W_1$, isto é, $v \in W_1$ e $v \neq 0$.
+Para aplicar o operador $T$, devemos decompor $v$ na forma $w_1+w_2$. Como $v \in W_1$, sua
+decomposição única é:
+
+\[
+v = v+0
+\]
+
+onde $v \in W_1$ e $0 \in W_2$ (o vetor nulo).
+
+Aplicando $T$:
+
+\[
+T(v)=T(v+0)=v
+\]
+
+Comparando com a equação de autovalor, $T(v)=\lambda v$, temos:
+
+\[
+v=\lambda v \;\;\Longrightarrow\;\; 1 \cdot v = \lambda v
+\]
+
+Como $v\neq 0$, concluímos que $\lambda=1$.
+
+Isto significa que \textbf{todo vetor não nulo de $W_1$ é um autovetor de $T$ associado ao autovalor $\lambda=1$}.
+O autoespaço associado a $\lambda=1$ é, portanto, o próprio subespaço $W_1$.
+
+\textbf{Caso 2: Análise sobre o subespaço $W_2$}
+
+Seja $v$ um vetor não nulo pertencente a $W_2$, isto é, $v \in W_2$ e $v \neq 0$.
+Sua decomposição única na soma direta é:
+
+\[
+v = 0+v
+\]
+
+onde $0 \in W_1$ e $v \in W_2$.
+
+Aplicando $T$:
+
+\[
+T(v) = T(0+v)=0
+\]
+
+Comparando com a equação de autovalor, $T(v)=\lambda v$, temos:
+
+\[
+0=\lambda v
+\]
+
+Como $v\neq 0$, a única solução para esta equação é $\lambda=0$.
+
+Isto significa que \textbf{todo vetor não nulo de $W_2$ é um autovetor de $T$ associado ao autovalor $\lambda=0$}.
+O autoespaço associado a $\lambda=0$ é o próprio subespaço $W_2$, que corresponde ao núcleo do
+operador, $\ker(T)$.
+
+\textbf{Conclusão sobre Autovalores e Autovetores:}
+
+Os autovalores de $T$ são $\lambda_1=1$ e $\lambda_2=0$.
+
+\begin{itemize}
+\item O autoespaço associado a $\lambda=1$ é $V_1=W_1$.
+\item O autoespaço associado a $\lambda=0$ é $V_0=W_2$.
+\end{itemize}
+
+Como $V=W_1 \oplus W_2$, o espaço $V$ é a soma direta dos autoespaços de $T$. Isso implica que o
+operador $T$ é diagonalizável.
+
+\subsubsection*{2. Polinômio Característico}
+
+Para determinar o polinômio característico $p_T(t)=\det(T-tI)$, a estratégia mais elegante é
+construir uma base para $V$ que seja adaptada à decomposição em soma direta.
+
+Seja $\mathcal{B}_1=\{u_1,u_2,\ldots,u_n\}$ uma base para $W_1$.
+
+Seja $\mathcal{B}_2=\{v_1,v_2,\ldots,v_m\}$ uma base para $W_2$.
+
+Como $V=W_1 \oplus W_2$, a união ordenada $\mathcal{B}=\{u_1,\ldots,u_n,v_1,\ldots,v_m\}$ forma uma base para $V$.
+A dimensão de $V$ é $n+m$.
+
+Vamos encontrar a representação matricial de $T$ nesta base, $[T]_{\mathcal{B}}$:
+
+\begin{itemize}
+\item Para os vetores de $\mathcal{B}_1$: $T(u_i)=u_i=1\cdot u_i$. As coordenadas de $T(u_i)$ na base $\mathcal{B}$ são
+$(0,\ldots,1,\ldots,0)^T$, com $1$ na $i$-ésima posição.
+\item Para os vetores de $\mathcal{B}_2$: $T(v_j)=0$. As coordenadas de $T(v_j)$ na base $\mathcal{B}$ são o vetor nulo
+$(0,\ldots,0)^T$.
+\end{itemize}
+
+A matriz de $T$ na base $\mathcal{B}$ é uma matriz em blocos:
+
+\[
+[T]_{\mathcal{B}} =
+\begin{pmatrix}
+I_n & 0 \\
+0 & 0_m
+\end{pmatrix}
+\]
+
+onde $I_n$ é a matriz identidade $n\times n$ e $0_m$ é a matriz nula $m\times m$.
+
+Agora, calculamos o polinômio característico:
+
+\[
+p_T(t) = \det([T]_{\mathcal{B}} - tI_{n+m})
+\]
+
+O determinante de uma matriz diagonal em blocos é o produto dos determinantes dos blocos:
+
+\[
+p_T(t) = \det((1-t)I_n)\cdot \det(-tI_m)
+\]
+
+\[
+p_T(t) = (1-t)^n \cdot (-t)^m
+\]
+
+Portanto, o polinômio característico de $T$ é $p_T(t)=(-1)^m t^m (1-t)^n$.
+As raízes são $t=0$ com multiplicidade algébrica $m=\dim(W_2)$, e $t=1$ com multiplicidade
+algébrica $n=\dim(W_1)$, como esperado.
+
+\subsubsection*{3. Polinômio Minimal}
+
+O polinômio minimal, $m_T(t)$, é o polinômio mônico (coeficiente do termo de maior grau igual a $1$) de
+menor grau que anula o operador $T$, i.e., $m_T(T)=0$.
+
+Vamos analisar a natureza do operador de projeção. O que acontece se aplicarmos $T$ duas vezes?
+Seja $v=w_1+w_2$ um vetor qualquer em $V$.
+
+\[
+T(v)=w_1
+\]
+
+Como $w_1 \in W_1$, sua decomposição é $w_1=w_1+0$. Logo:
+
+\[
+T(w_1)=w_1
+\]
+
+Assim, para todo $v \in V$, temos $T^2(v)=w_1=T(v)$.
+Isso nos mostra que $T^2=T$, ou seja, $T$ é um operador idempotente.
+
+A relação $T^2=T$ pode ser reescrita como $T^2-T=0$. Isso significa que o polinômio $q(t)=t^2-t=t(t-1)$ é um polinômio aniquilador de $T$.
+
+Pelo Teorema do Polinômio Minimal, sabemos que $m_T(t)$ deve dividir qualquer polinômio aniquilador
+de $T$. Logo, $m_T(t)$ deve dividir $q(t)=t(t-1)$.
+Os divisores mônicos de $t(t-1)$ são: $1, t, t-1$ e $t(t-1)$.
+
+\begin{itemize}
+\item Se $m_T(t)=t$, então $T=0$. Isso só ocorre se $W_1=\{0\}$ (i.e., $n=0$), um caso trivial.
+\item Se $m_T(t)=t-1$, então $T-I=0$, ou $T=I$. Isso só ocorre se $W_2=\{0\}$ (i.e., $m=0$), outro caso trivial.
+\end{itemize}
+
+Assumindo o caso não-trivial onde $n>0$ e $m>0$, nem $T$ nem $T-I$ são o operador nulo.
+Portanto, os polinômios de grau 1 não podem aniquilar $T$.
+
+Concluímos que o polinômio mônico de menor grau que anula $T$ é:
+
+\[
+m_T(t)=t(t-1)=t^2-t
+\]
+
+(Nos casos triviais, se $n=0$, $T=0$ e $m_T(t)=t$. Se $m=0$, $T=I$ e $m_T(t)=t-1$).
+
+\subsection*{Sumário dos Resultados}
+
+Para o operador de projeção $T$ sobre $W_1$ ao longo de $W_2$, com $\dim(W_1)=n>0$ e
+$\dim(W_2)=m>0$:
+
+\begin{itemize}
+\item \textbf{Autovalores:} $\lambda_1=1$ e $\lambda_2=0$.
+\item \textbf{Autovetores:} O autoespaço de $\lambda=1$ é $W_1$. O autoespaço de $\lambda=0$ é $W_2$.
+\item \textbf{Polinômio Característico:} $p_T(t)=(-1)^m t^m (1-t)^n$.
+\item \textbf{Polinômio Minimal:} $m_T(t)=t(t-1)$.
+\end{itemize}
+
+O fato de o polinômio minimal se fatorar em termos lineares distintos é uma confirmação algébrica
+da nossa conclusão geométrica de que o operador $T$ é diagonalizável.

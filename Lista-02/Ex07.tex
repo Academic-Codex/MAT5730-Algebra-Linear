@@ -1,0 +1,310 @@
+Hoje nos deparamos com um problema elegante que nos permitirá aplicar um dos mais belos
+resultados da teoria dos operadores lineares: a decomposição de um espaço vetorial em subespaços
+T-cíclicos e a consequente Forma Racional Canônica. A beleza desta forma reside em sua existência
+sobre qualquer corpo, ao contrário da forma de Jordan, que exige um corpo algebricamente fechado
+para garantir a existência.
+
+O problema nos fornece a matriz real $A$ e seu polinômio característico, $p_A(x)$. Nosso objetivo é
+duplo:
+
+1. Determinar a Forma Racional Canônica $\mathbb{R}$ da matriz $A$.
+
+2. Encontrar uma matriz de mudança de base $P$, inversível, tal que $P^{-1}AP = \mathbb{R}$.
+
+Vamos proceder com o rigor que a matéria exige.
+
+\subsection*{Fundamentação Teórica}
+
+Seja $V$ um espaço vetorial de dimensão finita sobre um corpo $\mathbb{F}$, e $T: V \to V$ um operador linear.
+O \textbf{Teorema da Decomposição Primária} nos assegura que se o polinômio mínimo $m_T(x)$ de $T$ se
+fatora em potências de polinômios irredutíveis distintos $m_T(x) = p_1(x)^{r_1}\cdots p_k(x)^{r_k}$, então $V$
+pode ser decomposto como a soma direta de subespaços $T$-invariantes $W_i = \ker(p_i(T)^{r_i})$, i.e.,
+
+\[
+V = W_1 \oplus W_2 \oplus \cdots \oplus W_k.
+\]
+
+Cada subespaço $W_i$ pode ser, por sua vez, decomposto em uma soma direta de subespaços $T$-
+cíclicos. A Forma Racional Canônica é a representação matricial de $T$ numa base que é a união das
+bases cíclicas para cada um desses subespaços. Os blocos desta matriz são as \textit{matrizes
+companheiras} dos polinômios aniquiladores desses subespaços cíclicos (os divisores elementares).
+
+\subsection*{Passo 1: Análise do Polinômio Característico e Determinação do Polinômio Mínimo}
+
+O polinômio característico de $A$ é dado por:
+
+\[
+f(x) = p_A(x) = (x^2 - 2x + 5)(x+5)(x-7)
+\]
+
+Analisemos os fatores sobre o corpo dos números reais, $\mathbb{R}$:
+
+\begin{itemize}
+\item O fator quadrático $p_1(x) = x^2 - 2x + 5$ tem discriminante $\Delta = (-2)^2 - 4(1)(5) = 4 - 20 = -16 < 0$. Portanto, ele não possui raízes reais e é irredutível sobre $\mathbb{R}$.
+\item Os fatores $p_2(x) = x+5$ e $p_3(x) = x-7$ são lineares e, portanto, irredutíveis.
+\end{itemize}
+
+O polinômio mínimo, $m_A(x)$, deve dividir o polinômio característico, $p_A(x)$, e deve ter os mesmos
+fatores irredutíveis. Como os fatores irredutíveis de $p_A(x)$ são todos distintos (não há potências
+maiores que 1), não há outra possibilidade senão o polinômio mínimo ser igual ao polinômio
+característico.
+
+\textbf{Corolário:} Se os fatores irredutíveis do polinômio característico são distintos, então o polinômio
+mínimo é igual ao polinômio característico.
+
+Portanto, o polinômio mínimo de $A$ é:
+
+\[
+m_A(x) = (x^2 - 2x + 5)(x+5)(x-7)
+\]
+
+Neste caso, os divisores elementares do operador associado a $A$ são precisamente os fatores
+irredutíveis do polinômio mínimo: $p_1(x) = x^2 - 2x + 5, p_2(x) = x+5$ e $p_3(x) = x-7$.
+
+\subsection*{Passo 2: Construção da Forma Racional Canônica $\mathbb{R}$}
+
+A Forma Racional Canônica $\mathbb{R}$ é uma matriz diagonal em blocos, onde cada bloco é a matriz
+companheira de um divisor elementar.
+
+A \textbf{matriz companheira} de um polinômio mônico $p(x) = x^k + a_{k-1}x^{k-1} + \cdots + a_1x + a_0$ é a
+matriz $k\times k$:
+
+\[
+C(p) =
+\begin{bmatrix}
+0 & 0 & \cdots & 0 & -a_0 \\
+1 & 0 & \cdots & 0 & -a_1 \\
+0 & 1 & \cdots & 0 & -a_2 \\
+\vdots & \vdots & \ddots & \vdots & \vdots \\
+0 & 0 & \cdots & 1 & -a_{k-1}
+\end{bmatrix}
+\]
+
+\begin{enumerate}
+\item Para $p_1(x) = x^2 - 2x + 5$, temos $a_0 = 5$ e $a_1 = -2$. A matriz companheira é:
+
+\[
+C(p_1) =
+\begin{bmatrix}
+0 & -5 \\
+1 & 2
+\end{bmatrix}
+\]
+
+\item Para $p_2(x) = x+5 = x - (-5)$, temos $a_0 = 5$. A matriz companheira é:
+
+\[
+C(p_2) = [-5]
+\]
+
+\item Para $p_3(x) = x-7$, temos $a_0 = -7$. A matriz companheira é:
+
+\[
+C(p_3) = [7]
+\]
+\end{enumerate}
+
+A forma racional $\mathbb{R}$ é a soma direta (em blocos na diagonal) dessas matrizes companheiras. A ordem
+dos blocos não é única, mas qualquer ordenação resulta em uma matriz semelhante. Escolhemos a
+seguinte ordem:
+
+\[
+\mathbb{R} = C(p_1)\oplus C(p_2)\oplus C(p_3) =
+\begin{bmatrix}
+0 & -5 & 0 & 0 \\
+1 & 2 & 0 & 0 \\
+0 & 0 & -5 & 0 \\
+0 & 0 & 0 & 7
+\end{bmatrix}
+\]
+
+Esta é a Forma Racional Canônica de $A$.
+
+\subsection*{Passo 3: Determinação da Matriz de Mudança de Base $P$}
+
+A matriz $P$ é formada por uma base de $\mathbb{R}^4$ na qual o operador $T(v)=Av$ tem a matriz $\mathbb{R}$. Esta
+base é a união das bases cíclicas dos subespaços $W_i$ da decomposição primária.
+
+\[
+\mathbb{R}^4 = W_1 \oplus W_2 \oplus W_3
+\]
+
+onde:
+
+\begin{itemize}
+\item $W_1 = \ker(p_1(A)) = \ker(A^2 - 2A + 5I)$
+\item $W_2 = \ker(p_2(A)) = \ker(A+5I)$ (o autoespaço associado a $\lambda = -5$)
+\item $W_3 = \ker(p_3(A)) = \ker(A-7I)$ (o autoespaço associado a $\lambda = 7$)
+\end{itemize}
+
+\subsubsection*{Cálculo da base para $W_1$:}
+
+$W_1$ é um subespaço $T$-cíclico de dimensão 2. Precisamos encontrar um vetor $v_1 \in W_1$ tal que
+$\{v_1, Av_1\}$ seja uma base para $W_1$.
+
+Primeiro, calculemos $A^2 - 2A + 5I$:
+
+\[
+A^2 =
+\begin{bmatrix}
+1 & 2 & 0 & 4 \\
+4 & 1 & 2 & 0 \\
+0 & 4 & 1 & 2 \\
+2 & 0 & 4 & 1
+\end{bmatrix}
+\begin{bmatrix}
+1 & 2 & 0 & 4 \\
+4 & 1 & 2 & 0 \\
+0 & 4 & 1 & 2 \\
+2 & 0 & 4 & 1
+\end{bmatrix}
+=
+\begin{bmatrix}
+17 & 4 & 20 & 8 \\
+8 & 17 & 4 & 20 \\
+20 & 8 & 17 & 4 \\
+4 & 20 & 8 & 17
+\end{bmatrix}
+\]
+
+\[
+A^2 - 2A + 5I =
+\begin{bmatrix}
+17 & 4 & 20 & 8 \\
+8 & 17 & 4 & 20 \\
+20 & 8 & 17 & 4 \\
+4 & 20 & 8 & 17
+\end{bmatrix}
+-
+\begin{bmatrix}
+2 & 4 & 0 & 8 \\
+8 & 2 & 4 & 0 \\
+0 & 8 & 2 & 4 \\
+4 & 0 & 8 & 2
+\end{bmatrix}
++
+\begin{bmatrix}
+5 & 0 & 0 & 0 \\
+0 & 5 & 0 & 0 \\
+0 & 0 & 5 & 0 \\
+0 & 0 & 0 & 5
+\end{bmatrix}
+=
+\begin{bmatrix}
+20 & 0 & 20 & 0 \\
+0 & 20 & 0 & 20 \\
+20 & 0 & 20 & 0 \\
+0 & 20 & 0 & 20
+\end{bmatrix}
+\]
+
+Buscamos o núcleo (espaço nulo) desta matriz. Seja $v=(x_1,x_2,x_3,x_4)^T$. As equações são
+$20x_1+20x_3=0$ e $20x_2+20x_4=0$, que simplificam para $x_1=-x_3$ e $x_2=-x_4$.
+
+Uma base para $W_1=\ker(A^2-2A+5I)$ é $\{(-1,0,1,0)^T,(0,-1,0,1)^T\}$.
+
+Escolhemos um vetor $v_1$ deste espaço, por exemplo, $v_1=(0,1,0,-1)^T$. O segundo vetor da base
+cíclica será $v_2=Av_1$.
+
+\[
+v_2 = Av_1 =
+\begin{bmatrix}
+1 & 2 & 0 & 4 \\
+4 & 1 & 2 & 0 \\
+0 & 4 & 1 & 2 \\
+2 & 0 & 4 & 1
+\end{bmatrix}
+\begin{bmatrix}
+0 \\ 1 \\ 0 \\ -1
+\end{bmatrix}
+=
+\begin{bmatrix}
+-2 \\ 1 \\ 2 \\ -1
+\end{bmatrix}
+\]
+
+A base para o primeiro bloco é $\{v_1,v_2\}=\{(0,1,0,-1)^T,(-2,1,2,-1)^T\}$.
+
+\subsubsection*{Cálculo da base para $W_2$:}
+
+Buscamos o núcleo de $A+5I$:
+
+\[
+A+5I =
+\begin{bmatrix}
+6 & 2 & 0 & 4 \\
+4 & 6 & 2 & 0 \\
+0 & 4 & 6 & 2 \\
+2 & 0 & 4 & 6
+\end{bmatrix}
+\]
+
+Escalonando esta matriz, encontramos que seu núcleo é um espaço de dimensão 1, gerado pelo
+autovetor $v_3=(1,-1,-1,1)^T$.
+
+\subsubsection*{Cálculo da base para $W_3$:}
+
+Buscamos o núcleo de $A-7I$:
+
+\[
+A-7I =
+\begin{bmatrix}
+-6 & 2 & 0 & 4 \\
+4 & -6 & 2 & 0 \\
+0 & 4 & -6 & 2 \\
+2 & 0 & 4 & -6
+\end{bmatrix}
+\]
+
+Escalonando esta matriz, encontramos que seu núcleo é também de dimensão 1, gerado pelo
+autovetor $v_4=(1,1,1,1)^T$.
+
+\subsection*{Montagem da Matriz $P$:}
+
+A matriz $P$ é formada pelas colunas sendo os vetores da base que encontramos, na ordem que
+corresponde aos blocos de $\mathbb{R}$.
+
+\[
+P = [v_1|v_2|v_3|v_4]
+\]
+
+\[
+P =
+\begin{bmatrix}
+0 & -2 & 1 & 1 \\
+1 & 1 & -1 & 1 \\
+0 & 2 & -1 & 1 \\
+-1 & -1 & 1 & 1
+\end{bmatrix}
+\]
+
+\subsection*{Conclusão}
+
+A Forma Racional Canônica da matriz $A$ é
+
+\[
+\mathbb{R} =
+\begin{bmatrix}
+0 & -5 & 0 & 0 \\
+1 & 2 & 0 & 0 \\
+0 & 0 & -5 & 0 \\
+0 & 0 & 0 & 7
+\end{bmatrix}
+\]
+
+e uma matriz inversível $P$ tal que $P^{-1}AP=\mathbb{R}$ é dada por
+
+\[
+P =
+\begin{bmatrix}
+0 & -2 & 1 & 1 \\
+1 & 1 & -1 & 1 \\
+0 & 2 & -1 & 1 \\
+-1 & -1 & 1 & 1
+\end{bmatrix}
+\]
+
+A existência e a construção de $P$ e $\mathbb{R}$ são uma consequência direta da estrutura profunda dos
+espaços vetoriais sob a ação de um operador linear, magnificamente descrita pelo Teorema da
+Decomposição em Subespaços Cíclicos. Este exercício ilustra a beleza e o poder computacional
+desta teoria. Prossigam com seus estudos.

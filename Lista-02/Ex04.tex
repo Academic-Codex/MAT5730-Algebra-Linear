@@ -1,0 +1,194 @@
+O problema que nos é apresentado hoje é de uma profundidade e beleza notáveis. Ele nos convida a
+explorar como a existência de um operador linear com uma propriedade análoga à do número
+imaginário $i$ (a saber, $T^2=-I$) impõe uma estrutura riquíssima a um espaço vetorial real. Veremos
+que tal espaço pode ser "visto" como um espaço vetorial sobre o corpo dos números complexos, o
+que terá consequências diretas sobre sua dimensão.
+
+Vamos à análise detalhada de cada item.
+
+\subsection*{Enunciado do Problema:}
+
+Seja $V$ um espaço vetorial sobre $\mathbb{R}$ de dimensão finita e suponhamos que $T$ é um operador linear de
+$V$ tal que $T^2=-I$.
+
+\begin{enumerate}[label=\alph*)]
+\item Mostre que $V$ possui uma base da forma $\{u_1,u_2,\ldots,u_k,T(u_1),T(u_2),\ldots,T(u_k)\}$.
+
+\item Mostre que a operação $(a+ib)u=au+bT(u)\;(a,b\in\mathbb{R})$ define, juntamente com a
+adição de $V$, uma estrutura de $\mathbb{C}$-espaço vetorial em $V$.
+
+\item Se $\dim_{\mathbb{R}} V=n$, qual é a $\dim_{\mathbb{C}} V$?
+\end{enumerate}
+
+\subsection*{Demonstração}
+
+\textbf{Parte a) Construção da Base}
+
+A construção desta base será feita por um processo indutivo. A ideia central é selecionar um vetor $u$
+e mostrar que o par $\{u,T(u)\}$ é linearmente independente, gerando um subespaço $T$-invariante.
+Repetimos o processo no "espaço que sobra" até exaurir $V$.
+
+\textbf{Lema Preliminar:} Para qualquer $u\in V$, $u\neq 0$, o conjunto $\{u,T(u)\}$ é linearmente independente
+sobre $\mathbb{R}$.
+
+\textbf{Prova do Lema:}
+
+Seja $u\in V$, $u\neq 0$. Considere a combinação linear nula:
+\[
+c_1u+c_2T(u)=0 \quad\quad (*)
+\]
+com $c_1,c_2\in\mathbb{R}$. Nosso objetivo é mostrar que $c_1=c_2=0$.
+Aplicando o operador linear $T$ a ambos os lados da equação $(*)$:
+\[
+T(c_1u+c_2T(u))=T(0)
+\]
+\[
+c_1T(u)+c_2T^2(u)=0
+\]
+
+Usando a hipótese fundamental que $T^2=-I$:
+\[
+c_1T(u)+c_2(-I(u))=0
+\]
+\[
+c_1T(u)-c_2u=0 \quad\quad (**)
+\]
+
+Temos agora um sistema de duas equações vetoriais:
+\begin{enumerate}
+\item $c_1u+c_2T(u)=0$
+\item $-c_2u+c_1T(u)=0$
+\end{enumerate}
+
+Multiplicando a equação (1) por $c_1$ e a equação (2) por $c_2$:
+\begin{enumerate}
+\item $c_1^2u+c_1c_2T(u)=0$
+\item $-c_2^2u+c_1c_2T(u)=0$
+\end{enumerate}
+
+Subtraindo a segunda equação da primeira:
+\[
+(c_1^2u+c_1c_2T(u))-( -c_2^2u+c_1c_2T(u))=0
+\]
+\[
+c_1^2u+c_2^2u=0
+\]
+\[
+(c_1^2+c_2^2)u=0
+\]
+
+Como, por hipótese, $u\neq 0$, o escalar deve ser nulo:
+\[
+c_1^2+c_2^2=0
+\]
+
+Sendo $c_1$ e $c_2$ números reais, a única forma de a soma de seus quadrados ser zero é se ambos forem
+zero. Logo, $c_1=0$ e $c_2=0$.
+Isto prova que o conjunto $\{u,T(u)\}$ é linearmente independente. \textbf{Q.E.D. (Lema)}
+
+\textbf{Construção da Base:}
+
+Procederemos por indução.
+
+\begin{enumerate}
+\item Se $V=\{0\}$, a base é o conjunto vazio e o teorema é trivialmente satisfeito.
+\item Suponha $V\neq \{0\}$. Escolha um vetor não nulo $u_1\in V$. Pelo lema, o conjunto $\{u_1,T(u_1)\}$ é L.I. Seja $W_1=\mathrm{span}\{u_1,T(u_1)\}$.
+\item Se $W_1=V$, então $\{u_1,T(u_1)\}$ é uma base para $V$ e a prova termina.
+\item Se $W_1\neq V$, escolha um vetor $u_2\in V\setminus W_1$. O conjunto $\{u_1,T(u_1),u_2,T(u_2)\}$ é linearmente independente.
+\end{enumerate}
+
+Para provar isso, considere a combinação linear nula:
+\[
+c_1u_1+c_2T(u_1)+c_3u_2+c_4T(u_2)=0
+\]
+
+...
+
+Neste ponto, teremos construído uma base para $V$ da forma desejada:
+
+\[
+\mathcal{B}=\{u_1,\ldots,u_k,T(u_1),\ldots,T(u_k)\}
+\]
+
+\textbf{Parte b) Estrutura de $\mathbb{C}$-Espaço Vetorial}
+
+...
+
+\textbf{Parte c) Dimensão sobre $\mathbb{C}$}
+
+Na parte (a), mostramos que se $\dim_{\mathbb{R}} V=n$, então $V$ possui uma base real da forma
+\[
+\mathcal{B}_{\mathbb{R}}=\{u_1,\ldots,u_k,T(u_1),\ldots,T(u_k)\}
+\]
+
+O número de vetores nesta base é $n=2k$. Isto revela um fato importante: \textit{a dimensão de um
+espaço vetorial real que admite tal operador $T$ deve ser par.}
+
+Agora, vamos determinar a dimensão de $V$ como um $\mathbb{C}$-espaço vetorial. Propomos que o conjunto
+\[
+\mathcal{B}_{\mathbb{C}}=\{u_1,u_2,\ldots,u_k\}
+\]
+é uma base para $V$ sobre $\mathbb{C}$. Devemos provar que este conjunto gera $V$ e é linearmente
+independente sobre $\mathbb{C}$.
+
+\textbf{1. $\mathcal{B}_{\mathbb{C}}$ gera $V$ sobre $\mathbb{C}$:}
+
+Seja $v$ um vetor qualquer em $V$. Como $\mathcal{B}_{\mathbb{R}}$ é uma base real, existem escalares reais 
+$a_{1}, \ldots, a_{k}, b_{1}, \ldots, b_{k}$ tais que:
+
+\[
+v = \sum_{j=1}^{k} a_{j}u_{j} + \sum_{j=1}^{k} b_{j}T(u_{j})
+\]
+
+Podemos reagrupar a soma da seguinte maneira:
+
+\[
+v = \sum_{j=1}^{k} \big(a_{j}u_{j} + b_{j}T(u_{j})\big)
+\]
+
+Usando a definição de multiplicação por escalar complexo que estabelecemos na parte (b), a expressão dentro do somatório pode ser reescrita como:
+
+\[
+a_{j}u_{j} + b_{j}T(u_{j}) = (a_{j} + ib_{j})u_{j}
+\]
+
+Logo, substituindo de volta na expressão para $v$, obtemos:
+
+\[
+v = \sum_{j=1}^{k} (a_{j} + ib_{j})u_{j}
+\]
+
+Esta última expressão é uma combinação linear dos vetores de $\mathcal{B}_{\mathbb{C}}$ com coeficientes complexos 
+$c_{j} = a_{j} + ib_{j}$. Portanto, o conjunto $\mathcal{B}_{\mathbb{C}}$ gera o espaço $V$ sobre $\mathbb{C}$.
+
+\textbf{2. $\mathcal{B}_{\mathbb{C}}$ é linearmente independente sobre $\mathbb{C}$:}
+
+Considere a combinação linear nula com escalares complexos $c_{j} = a_{j} + ib_{j}$:
+
+\[
+\sum_{j=1}^{k} c_{j}u_{j} = 0
+\]
+
+Aplicando a nossa definição:
+
+\[
+\sum_{j=1}^{k} (a_{j} + ib_{j})u_{j} = 0 \;\;\;\;\;\; \Longrightarrow \;\;\;\;\;\; \sum_{j=1}^{k} (a_{j}u_{j} + b_{j}T(u_{j})) = 0
+\]
+
+Esta é uma combinação linear dos vetores da base real $\mathcal{B}_{\mathbb{R}}$. Como eles são linearmente independentes sobre $\mathbb{R}$, todos os coeficientes reais devem ser nulos:
+
+\[
+a_{j} = 0 \quad \text{e} \quad b_{j} = 0, \quad \text{para todo } j = 1, \ldots, k
+\]
+
+Isso implica que cada escalar complexo $c_{j} = a_{j} + ib_{j} = 0$. Portanto, o conjunto $\mathcal{B}_{\mathbb{C}}$ é linearmente independente sobre $\mathbb{C}$.
+
+\textbf{Conclusão:}
+
+Como $\mathcal{B}_{\mathbb{C}} = \{u_{1}, \ldots, u_{k}\}$ é uma base de $V$ sobre $\mathbb{C}$, a dimensão de $V$ como espaço vetorial complexo é $k$. Sabendo que $\dim_{\mathbb{R}} V = n = 2k$, concluímos que:
+
+\[
+\dim_{\mathbb{C}} V = k = \frac{n}{2}
+\]
+
+Espero sinceramente que esta versão se apresente de forma correta e inequívoca. Agradeço sua paciência com estas falhas do meio digital.
